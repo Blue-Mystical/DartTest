@@ -13,10 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
-      title: 'Flutter Login and Register',
+      title: 'Traveldgwa',
       theme: ThemeData(
-        primaryColor: PrimaryColor,
-        scaffoldBackgroundColor: SecondaryColor,
+        primaryColor: primaryColor,
+        textTheme: Theme.of(context).textTheme.apply(bodyColor: textColor),
+        scaffoldBackgroundColor: secondaryColor,
       ),
       home: LoginScreen()
     );
