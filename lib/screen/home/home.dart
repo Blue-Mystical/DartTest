@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:home_and_login/constants.dart';
-import 'package:home_and_login/screen/login_register/components/body.dart';
+import 'package:home_and_login/screen/home/components/body.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LoginBody(),
+      body: HomeBody(),
 
     );
   }

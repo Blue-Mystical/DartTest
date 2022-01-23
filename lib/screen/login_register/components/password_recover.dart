@@ -2,23 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:home_and_login/constants.dart';
 import 'package:flutter/gestures.dart';
 
-class Body extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    return Container(
-      height: size.height,
-      width: double.infinity,
-      color: secondaryColor,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[],
-      )
-    );
-  }
-}
-
 class PasswordRecoveryForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

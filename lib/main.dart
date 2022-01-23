@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:home_and_login/screen/login.dart';
+import 'package:home_and_login/screen/login_register/login.dart';
+import 'package:home_and_login/screen/login_register/password_recovery.dart';
+import 'package:home_and_login/screen/login_register/register.dart';
+import 'package:home_and_login/screen/home/home.dart';
 import 'package:home_and_login/constants.dart';
 
 void main() {
@@ -12,14 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
       title: 'Traveldgwa',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: primaryColor,
         textTheme: Theme.of(context).textTheme.apply(bodyColor: textColor),
         scaffoldBackgroundColor: secondaryColor,
       ),
-      home: LoginScreen()
+      // เปลี่ยน screen ตรงนี้ v
+      home: HomeScreen()
     );
   }
 }

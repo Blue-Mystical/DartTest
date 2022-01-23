@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const textColor = Color(0xFF333333);
+const boxColor = Color(0xFFECFAFF);
 const primaryColor = Color(0xFF1D3557);
 const secondaryColor = Color(0xFFFFF4DC); // also bg color
 const findTripColor = Color(0xFF64ECC7);

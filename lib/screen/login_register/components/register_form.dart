@@ -1,40 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:home_and_login/constants.dart';
 import 'package:flutter/gestures.dart';
-
-class Body extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    return Container(
-      height: size.height,
-      width: double.infinity,
-      color: secondaryColor,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[],
-      )
-    );
-  }
-}
+import 'package:http/http.dart' as http;
 
 class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+    TextEditingController emailController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
+    Future save() async {
+      var res = await http.post("http://10.0.2.2:8080/signup",
+          headers: <String, String>{
+            'Context-Type': 'application/json;charSet=UTF-8'
+          },
+          body: <String, String>{
+            "email": emailController.text,
+            "phone": phoneController.text,
+            "password": passwordController.text,
+          });
+      print(res.body);
+    }
+
     return Stack(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             left: paddingValue,
             right: paddingValue,
           ),
           child: Column(
             children: <Widget>[
               Container(
-                child: Center(
+                child: const Center(
                   child: Text("ลงทะเบียนเข้าใช้งาน",
                     style: TextStyle(
                       color: primaryColor,
@@ -46,7 +47,7 @@ class RegisterForm extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.0),
-              TextField(
+              TextFormField(
                 decoration: InputDecoration(
                     labelText: 'อีเมล',
                     labelStyle: TextStyle(
@@ -54,44 +55,13 @@ class RegisterForm extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: primaryColor,
                     ),
-                    // hintText: 'EMAIL',
-                    // hintStyle: ,
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: primaryColor))),
+                  controller: emailController,
               ),
-              SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  new Flexible(
-                    child: new TextField(
-                        decoration: InputDecoration(
-                            labelText: 'ชื่อ',
-                            labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: primaryColor,
-                            ),
-                        )
-                    ),
-                  ),
-                  SizedBox(width: 10.0,),
-                  new Flexible(
-                    child: new TextField(
-                        decoration: InputDecoration(
-                            labelText: 'นามสกุล',
-                            labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: primaryColor,
-                            ),
-                        )
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10.0),
-              TextField(
+
+              const SizedBox(height: 10.0),
+              TextFormField(
                 decoration: InputDecoration(
                     labelText: 'หมายเลขโทรศัพท์',
                     labelStyle: TextStyle(
@@ -103,9 +73,10 @@ class RegisterForm extends StatelessWidget {
                     // hintStyle: ,
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: primaryColor))),
+                controller: phoneController,
               ),
-              SizedBox(height: 10.0),
-              TextField(
+              const SizedBox(height: 10.0),
+              TextFormField(
                 decoration: InputDecoration(
                     labelText: 'รหัสผ่าน',
                     labelStyle: TextStyle(
@@ -113,15 +84,9 @@ class RegisterForm extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: primaryColor,
                     ),
-                    // prefixIcon: Align(
-                    //   widthFactor: 1.0,
-                    //   heightFactor: 1.0,
-                    //   child: Icon(
-                    //     Icons.person,
-                    //   ),
-                    // ),
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: primaryColor))),
+                controller: passwordController,
                 obscureText: true,
               ),
               SizedBox(height: 5.0),
@@ -130,7 +95,7 @@ class RegisterForm extends StatelessWidget {
                 onTap: () {
                   print('change page to request password');
                 },
-                  child: Align(
+                  child: const Align(
                     alignment: Alignment.centerRight,
                     child: Text("ลืมรหัสผ่าน ?",
                       style: TextStyle(
@@ -143,27 +108,32 @@ class RegisterForm extends StatelessWidget {
               ),
               SizedBox(height: 30.0),
               Container(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: 10,
                     right: 10,
                   ),
                   height: 50.0,
-                  child: Material(
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: primaryColor,
                     child: GestureDetector(
-                      onTap: () {},
-                      child: Center(
-                        child: Text(
-                          'สมัครสมาชิก',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat'),
+                      onTap: () {
+                        print('tap');
+                        save();
+                      },
+                        child: Material(
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: primaryColor,
+
+                          child: const Center(
+                            child: Text(
+                              'สมัครสมาชิก',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat'),
+                            ),
+                          ),
                         ),
-                      ),
                     ),
-                  )
+
               ),
               SizedBox(height: 20.0),
               RichText(
