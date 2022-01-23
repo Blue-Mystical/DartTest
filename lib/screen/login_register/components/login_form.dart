@@ -45,7 +45,7 @@ class LoginForm extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: size.height * 0.02,),
               TextField(
                 decoration: InputDecoration(
                     labelText: 'อีเมลหรือหมายเลขโทรศัพท์',
@@ -59,7 +59,7 @@ class LoginForm extends StatelessWidget {
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: primaryColor))),
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: size.height * 0.01,),
               TextField(
                 decoration: InputDecoration(
                     labelText: 'รหัสผ่าน',
@@ -79,7 +79,7 @@ class LoginForm extends StatelessWidget {
                         borderSide: BorderSide(color: primaryColor))),
                 obscureText: true,
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: size.height * 0.006,),
               Container(
                 child: GestureDetector(
                 onTap: () {
@@ -96,7 +96,7 @@ class LoginForm extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 70.0),
+              SizedBox(height: size.height * 0.07,),
               Container(
                   padding: EdgeInsets.only(
                     left: 10,

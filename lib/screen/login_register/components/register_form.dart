@@ -46,7 +46,7 @@ class RegisterForm extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: size.height * 0.02,),
               TextFormField(
                 decoration: InputDecoration(
                     labelText: 'อีเมล',
@@ -60,7 +60,7 @@ class RegisterForm extends StatelessWidget {
                   controller: emailController,
               ),
 
-              const SizedBox(height: 10.0),
+              SizedBox(height: size.height * 0.01,),
               TextFormField(
                 decoration: InputDecoration(
                     labelText: 'หมายเลขโทรศัพท์',
@@ -75,7 +75,7 @@ class RegisterForm extends StatelessWidget {
                         borderSide: BorderSide(color: primaryColor))),
                 controller: phoneController,
               ),
-              const SizedBox(height: 10.0),
+              SizedBox(height: size.height * 0.01,),
               TextFormField(
                 decoration: InputDecoration(
                     labelText: 'รหัสผ่าน',
@@ -89,24 +89,7 @@ class RegisterForm extends StatelessWidget {
                 controller: passwordController,
                 obscureText: true,
               ),
-              SizedBox(height: 5.0),
-              Container(
-                child: GestureDetector(
-                onTap: () {
-                  print('change page to request password');
-                },
-                  child: const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text("ลืมรหัสผ่าน ?",
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 30.0),
+              SizedBox(height: size.height * 0.07,),
               Container(
                   padding: const EdgeInsets.only(
                     left: 10,

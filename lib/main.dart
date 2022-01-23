@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: secondaryColor,
       ),
       // เปลี่ยน screen ตรงนี้ v
-      home: HomeScreen()
+      home: RegisterScreen()
     );
   }
 }
